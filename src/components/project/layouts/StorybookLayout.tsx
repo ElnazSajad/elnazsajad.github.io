@@ -1,6 +1,8 @@
-import type { Project } from "@/content/types";
+import type { CSSProperties, ReactNode } from "react";
+import type { MediaSlot, Project } from "@/content/types";
 import { Media } from "@/components/Media";
 import { Reveal } from "@/components/Reveal";
+import { cn } from "@/lib/utils";
 import { Container, ProcessList, ProjectHeader, ProjectMeta } from "../parts";
 
 /** Nutopia — dark, cinematic section for character and background design. */
@@ -21,31 +23,31 @@ export function StorybookLayout({ p }: { p: Project }) {
 
         {/* 01 — characters */}
         <section aria-labelledby="nutopia-characters" className="mt-16">
-          <div className="grid items-start gap-8 md:grid-cols-12">
-            <Reveal className="md:col-span-5">
+          <div className="grid items-end gap-8 md:grid-cols-12">
+            <Reveal className="md:col-span-5 md:pb-10">
               <p className="label-mono text-signal">01 / Nutopia</p>
               <h4 id="nutopia-characters" className="mt-4 font-display text-4xl font-semibold md:text-5xl">
                 Character Design
               </h4>
               <p className="mt-6 font-serif text-2xl leading-snug">“{p.intro}”</p>
             </Reveal>
-            <Reveal className="md:col-span-6 md:col-start-7" delay={120}>
-              <Media slot={slot("char_top")} tone="dark" />
+            <Reveal className="md:col-span-7" delay={120}>
+              <CharacterCard slot={slot("char_top")} />
             </Reveal>
           </div>
 
-          <div className="mt-8 grid items-start gap-5 md:grid-cols-12 md:gap-6">
+          {/* Justified rows: every image in a row shares one height and the row fills the width. */}
+          <div className="mt-6 space-y-6 md:mt-8 md:space-y-8">
             {[
-              { id: "char_fish", cls: "md:col-span-3" },
-              { id: "char_female", cls: "md:col-span-4" },
-              { id: "char_four", cls: "md:col-span-5" },
-              { id: "char_seven", cls: "md:col-span-5" },
-              { id: "char_children", cls: "md:col-span-4" },
-              { id: "char_colorful", cls: "md:col-span-3" },
-            ].map((item, i) => (
-              <Reveal key={item.id} className={item.cls} delay={i * 60}>
-                <Media slot={slot(item.id)} tone="dark" />
-              </Reveal>
+              ["char_fish", "char_female", "char_four"],
+              ["char_seven"],
+              ["char_children", "char_colorful"],
+            ].map((row, r) => (
+              <JustifiedRow key={r}>
+                {row.map((id, i) => (
+                  <JustifiedItem key={id} slot={slot(id)} delay={i * 80} />
+                ))}
+              </JustifiedRow>
             ))}
           </div>
         </section>
@@ -86,6 +88,50 @@ export function StorybookLayout({ p }: { p: Project }) {
           <ProcessList p={p} dark />
         </Reveal>
       </Container>
+    </div>
+  );
+}
+
+/** "732/1104" → 0.663 */
+const ratio = (aspect = "1/1") => {
+  const [w, h] = aspect.split("/").map(Number);
+  return w && h ? w / h : 1;
+};
+
+/** Drawing on a white sheet, caption underneath. */
+function CharacterCard({ slot }: { slot: MediaSlot | undefined }) {
+  if (!slot) return null;
+  return (
+    <figure>
+      <Media slot={slot} tone="dark" className="bg-white" />
+      <figcaption className="mt-3 label-mono text-paper/60">{slot.caption ?? slot.label}</figcaption>
+    </figure>
+  );
+}
+
+function JustifiedRow({ children }: { children: ReactNode }) {
+  return <div className="flex flex-wrap gap-5 md:flex-nowrap md:gap-8">{children}</div>;
+}
+
+/**
+ * On desktop each item grows in proportion to its aspect ratio, so all
+ * images in a row end up the same height. On phones, portrait drawings
+ * pair up two per row and landscape ones take the full width.
+ */
+function JustifiedItem({ slot, delay }: { slot: MediaSlot | undefined; delay: number }) {
+  if (!slot) return null;
+  const r = ratio(slot.aspect);
+  return (
+    <div
+      className={cn(
+        "min-w-0",
+        r < 1 ? "[flex:var(--r)_1_0%]" : "basis-full md:[flex:var(--r)_1_0%]",
+      )}
+      style={{ "--r": r } as CSSProperties}
+    >
+      <Reveal delay={delay}>
+        <CharacterCard slot={slot} />
+      </Reveal>
     </div>
   );
 }
