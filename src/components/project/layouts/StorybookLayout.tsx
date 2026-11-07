@@ -61,23 +61,27 @@ export function StorybookLayout({ p }: { p: Project }) {
             </h4>
           </Reveal>
 
-          <div className="mt-12" aria-label="Three views of the same room">
-            <p className="label-mono text-paper/60">One room · three views</p>
-            <div className="mt-4 grid gap-5 md:grid-cols-3 md:gap-6">
-              {[1, 2, 3].map((n) => (
-                <Reveal key={n} delay={n * 60}>
-                  <Media slot={slot(`room_${n}`)} tone="dark" />
+          {/* One room: establishing shot large, the other angles in a row beneath. */}
+          <div className="mt-12" aria-label="Four views of the same room">
+            <p className="label-mono text-paper/60">One room · four views</p>
+            <Reveal className="mt-4">
+              <CharacterCard slot={slot("room_1")} />
+            </Reveal>
+            <div className="mt-6 grid gap-6 sm:grid-cols-3 md:mt-8 md:gap-8">
+              {[2, 3, 4].map((n, i) => (
+                <Reveal key={n} delay={i * 80}>
+                  <CharacterCard slot={slot(`room_${n}`)} />
                 </Reveal>
               ))}
             </div>
           </div>
 
-          <div className="mt-12" aria-label="Four different backgrounds">
-            <p className="label-mono text-paper/60">Backgrounds</p>
-            <div className="mt-4 grid gap-5 sm:grid-cols-2 md:gap-6">
-              {[1, 2, 3, 4].map((n) => (
-                <Reveal key={n} delay={n * 60}>
-                  <Media slot={slot(`background_${n}`)} tone="dark" />
+          <div className="mt-16 md:mt-20" aria-label="Four different backgrounds">
+            <p className="label-mono text-paper/60">Backgrounds · four worlds</p>
+            <div className="mt-4 grid gap-6 sm:grid-cols-2 md:gap-8">
+              {[1, 2, 3, 4].map((n, i) => (
+                <Reveal key={n} delay={(i % 2) * 80}>
+                  <CharacterCard slot={slot(`background_${n}`)} />
                 </Reveal>
               ))}
             </div>
