@@ -46,6 +46,8 @@ export type Project = {
   intro: string;
   process: string[];
   outcome?: string;
+  /** External profiles, e.g. social channels. Empty `href` shows "link to be added". */
+  links?: { name: string; href: string; handle?: string }[];
   layout: ProjectLayout;
   media: MediaSlot[];
 };

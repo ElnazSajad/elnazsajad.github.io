@@ -62,6 +62,22 @@ placeholder becomes a live link.
 
 If your image isn't the same shape as the placeholder, set `aspect` to the image's own ratio, e.g. `"1200/900"`.
 
+**Pissfool slots.** Each one is replaced on its own in `projects.ts` → `id: "pissfool"`:
+
+| Part | Slot id | Type |
+| --- | --- | --- |
+| 01 Social media growth & reach | `growth_1`, `growth_2` | image (screenshot) |
+| 02 The beginning: green character | `green_1`, `green_2` | video |
+| 03 Creative exploration | `cast_all` | image (all characters) |
+| 03 Creative exploration | `cast_video_1` – `cast_video_3` | video |
+| 04 Signature: traditional | `signature_manual_1`, `signature_manual_2` | video |
+| 04 Signature: AI-assisted | `signature_ai_1`, `signature_ai_2` | video |
+
+For a video, set `video: "/media/pissfool/clip.mp4"` and, ideally, `poster: "/media/pissfool/clip-poster.webp"`
+(a still frame shown before playback). Videos play muted in place when scrolled into view, and a click turns
+the sound on. If a clip isn't vertical, change its `aspect` (e.g. `"1/1"` or `"16/9"`).
+The Instagram, TikTok and YouTube links are in the same project's `links` list: add `href` (and an optional `handle`).
+
 **Change colours or fonts.** Edit the variables at the top of `src/styles.css`.
 
 ## Deploying

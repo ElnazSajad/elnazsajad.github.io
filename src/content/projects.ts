@@ -285,28 +285,53 @@ export const projects: Project[] = [
     id: "pissfool",
     number: "03",
     title: "Pissfool",
-    categories: ["Freelance Creative Design", "Motion Graphics", "Content Strategy"],
+    categories: ["Illustration", "Animation", "Storytelling", "Social Media Content"],
     role: "Independent creative practice",
     period: "Ongoing",
     intro:
-      "A self-directed studio of one: ideas, illustration and motion built for the feed — and an audience that grew around them.",
+      "An independent creative project combining illustration, animation, storytelling and social media content — a self-directed studio of one, and an audience that grew around it.",
     process: [
       "Creative concepts & strategy",
-      "Motion graphics",
+      "Character design",
+      "Frame-by-frame animation (Photoshop)",
+      "Motion graphics (After Effects)",
+      "AI-assisted animation",
       "Digital illustration",
       "Social media content",
       "Visual storytelling",
     ],
     outcome: "Millions of views and a combined audience of over 160,000 across social platforms.",
+    /** Add the profile URLs (and optionally a handle like "@pissfool") to make these live. */
+    links: [
+      { name: "Instagram", href: "", handle: "" },
+      { name: "TikTok", href: "", handle: "" },
+      { name: "YouTube", href: "", handle: "" },
+    ],
     layout: "playground",
+    // Each slot is independent: add `src` (images) or `video` + `poster` (videos)
+    // and change `aspect` to match your file, e.g. "1080/1920" for a vertical clip.
     media: [
-      { id: "clip_vertical", label: "Motion clip · vertical", aspect: "9/16", type: "video", alt: "Pissfool vertical motion clip" },
-      { id: "clip_square", label: "Motion clip · square", aspect: "1/1", type: "video", alt: "Pissfool square motion clip" },
-      { id: "collage_1", label: "Illustration", aspect: "4/5" },
-      { id: "collage_2", label: "Motion / video", aspect: "9/16", type: "video" },
-      { id: "collage_3", label: "Concept", aspect: "1/1" },
-      { id: "collage_4", label: "Social sample", aspect: "4/5" },
-      { id: "collage_5", label: "Illustration", aspect: "1/1" },
+      // Part 01 — Social media growth & reach
+      { id: "growth_1", label: "Growth screenshot 01", aspect: "16/10", alt: "Pissfool social media growth screenshot" },
+      { id: "growth_2", label: "Reach screenshot 02", aspect: "16/10", alt: "Pissfool reach and performance screenshot" },
+
+      // Part 02 — The beginning: green character (hand-animated, no AI)
+      { id: "green_1", label: "Green character · clip 01", aspect: "9/16", type: "video" },
+      { id: "green_2", label: "Green character · clip 02", aspect: "9/16", type: "video" },
+
+      // Part 03 — Creative exploration: the full cast (hand-made, no AI)
+      { id: "cast_all", label: "All Pissfool characters", aspect: "16/9", alt: "Collection of all characters created for Pissfool" },
+      { id: "cast_video_1", label: "Character clip 01", aspect: "9/16", type: "video" },
+      { id: "cast_video_2", label: "Character clip 02", aspect: "9/16", type: "video" },
+      { id: "cast_video_3", label: "Character clip 03", aspect: "9/16", type: "video" },
+
+      // Part 04 — Signature character: traditional animation
+      { id: "signature_manual_1", label: "Traditional · clip 01", aspect: "9/16", type: "video" },
+      { id: "signature_manual_2", label: "Traditional · clip 02", aspect: "9/16", type: "video" },
+
+      // Part 04 — Signature character: AI-assisted animation
+      { id: "signature_ai_1", label: "AI-assisted · clip 01", aspect: "9/16", type: "video" },
+      { id: "signature_ai_2", label: "AI-assisted · clip 02", aspect: "9/16", type: "video" },
     ],
   },
 

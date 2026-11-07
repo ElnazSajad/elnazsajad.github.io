@@ -69,10 +69,22 @@ export function ProcessList({ p, numbered, dark }: { p: Project; numbered?: bool
 }
 
 /** Numbered chapter heading used inside the Cleany case study. */
-export function Chapter({ n, title, children }: { n: string; title: string; children: ReactNode }) {
+export function Chapter({
+  n,
+  title,
+  children,
+  label = "Chapter",
+}: {
+  n: string;
+  title: string;
+  children: ReactNode;
+  label?: string;
+}) {
   return (
     <div className="grid gap-6 border-t border-ink pt-6 md:grid-cols-12">
-      <p className="label-mono text-signal-deep md:col-span-2">Chapter {n}</p>
+      <p className="label-mono text-signal-deep md:col-span-2">
+        {label} {n}
+      </p>
       <h4 className="font-display text-3xl leading-tight font-semibold tracking-tight md:col-span-4 md:text-4xl">
         {title}
       </h4>
