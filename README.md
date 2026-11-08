@@ -69,7 +69,7 @@ If your image isn't the same shape as the placeholder, set `aspect` to the image
 | 01 Social media growth & reach | `growth_1`, `growth_2` | image (screenshot) |
 | 02 The beginning: green character | `green_1`, `green_2` | video |
 | 03 Creative exploration | `cast_all` | image (all characters) |
-| 03 Creative exploration | `cast_video_1` – `cast_video_3` | video |
+| 03 Creative exploration | `cast_video_1`, `cast_video_2` | video |
 | 04 Signature: traditional | `signature_manual_1`, `signature_manual_2` | video |
 | 04 Signature: AI-assisted | `signature_ai_1`, `signature_ai_2` | video |
 
@@ -82,11 +82,19 @@ The Instagram, TikTok and YouTube links are in the same project's `links` list: 
 
 ## Deploying
 
-`npm run build` produces a fully static site in `dist/`. Upload that folder to any static host
-(Netlify, Vercel, Cloudflare Pages, GitHub Pages…). No server is needed.
+The site is hosted on **GitHub Pages** at **https://elnazsajad.github.io**.
 
-Once the site has a domain, change `og:image` in `index.html` to an absolute URL
-(e.g. `https://yourdomain.com/og-image.png`) so link previews work everywhere.
+Deploys are automatic: every push to `main` runs `.github/workflows/deploy.yml`, which builds the site and
+publishes `dist/`. A deploy takes about a minute; you can follow it in the repository's **Actions** tab.
+
+```bash
+git add -A
+git commit -m "Describe the change"
+git push
+```
+
+`npm run build` also produces a fully static `dist/` folder that works on any other static host
+(Netlify, Vercel, Cloudflare Pages…).
 
 ## Changes from the Lovable version
 

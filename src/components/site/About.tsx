@@ -42,13 +42,20 @@ export function About() {
             </div>
             <div>
               <p className="mb-4 label-mono text-muted-foreground">Tools</p>
-              <ul className="divide-y border-y text-base">
-                {tools.map((t) => (
-                  <li key={t} className="py-1.5">
-                    {t}
-                  </li>
+              <div className="space-y-6">
+                {tools.map((g) => (
+                  <div key={g.group}>
+                    <p className="mb-1.5 label-mono text-[0.6rem] text-signal-deep">{g.group}</p>
+                    <ul className="divide-y border-y text-base">
+                      {g.items.map((t) => (
+                        <li key={t} className="py-1.5">
+                          {t}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           </div>
         </Reveal>

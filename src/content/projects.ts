@@ -300,38 +300,48 @@ export const projects: Project[] = [
       "Social media content",
       "Visual storytelling",
     ],
-    outcome: "Millions of views and a combined audience of over 160,000 across social platforms.",
+    outcome:
+      "165.5K followers and 1.3M likes on TikTok, with individual videos reaching 10.6M, 6.2M and 4.3M views.",
+    // Figures as shown in the TikTok screenshots in Part 01 — update them here when they change.
+    milestone: {
+      eyebrow: "Audience milestone · TikTok",
+      value: "165.5K",
+      caption: "followers on TikTok",
+      stats: [
+        { value: "1.3M", label: "Likes" },
+        { value: "10.6M", label: "Views · top video" },
+      ],
+    },
     /** Add the profile URLs (and optionally a handle like "@pissfool") to make these live. */
     links: [
-      { name: "Instagram", href: "", handle: "" },
-      { name: "TikTok", href: "", handle: "" },
-      { name: "YouTube", href: "", handle: "" },
+      { name: "Instagram", href: "https://www.instagram.com/pissfool__/", handle: "@pissfool__" },
+      { name: "TikTok", href: "https://www.tiktok.com/@pissfool", handle: "@pissfool" },
+      { name: "YouTube", href: "https://www.youtube.com/results?search_query=pissfool", handle: "Pissfool" },
     ],
     layout: "playground",
     // Each slot is independent: add `src` (images) or `video` + `poster` (videos)
     // and change `aspect` to match your file, e.g. "1080/1920" for a vertical clip.
     media: [
       // Part 01 — Social media growth & reach
-      { id: "growth_1", label: "Growth screenshot 01", aspect: "16/10", alt: "Pissfool social media growth screenshot" },
-      { id: "growth_2", label: "Reach screenshot 02", aspect: "16/10", alt: "Pissfool reach and performance screenshot" },
+      { id: "growth_1", label: "Growth screenshot 01", aspect: "990/286", src: "/media/pissfool/growth-tiktok-profile.webp", alt: "Pissfool TikTok profile: 165.5K followers and 1.3M likes", caption: "TikTok · profile, followers & likes" },
+      { id: "growth_2", label: "Reach screenshot 02", aspect: "748/380", src: "/media/pissfool/growth-tiktok-top-videos.webp", alt: "Three pinned Pissfool TikTok videos with 6.2M, 10.6M and 4.3M views", caption: "TikTok · most-viewed videos" },
 
       // Part 02 — The beginning: green character (hand-animated, no AI)
-      { id: "green_1", label: "Green character · clip 01", aspect: "9/16", type: "video" },
-      { id: "green_2", label: "Green character · clip 02", aspect: "9/16", type: "video" },
+      { id: "green_1", label: "Green character · clip 01", aspect: "9/16", type: "video", video: "/media/pissfool/green-01.mp4", poster: "/media/pissfool/green-01-poster.webp", alt: "Pissfool green character animation, clip 1" },
+      { id: "green_2", label: "Green character · clip 02", aspect: "9/16", type: "video", video: "/media/pissfool/green-02.mp4", poster: "/media/pissfool/green-02-poster.webp", alt: "Pissfool green character animation, clip 2" },
 
       // Part 03 — Creative exploration: the full cast (hand-made, no AI)
-      { id: "cast_all", label: "All Pissfool characters", aspect: "16/9", alt: "Collection of all characters created for Pissfool" },
-      { id: "cast_video_1", label: "Character clip 01", aspect: "9/16", type: "video" },
-      { id: "cast_video_2", label: "Character clip 02", aspect: "9/16", type: "video" },
-      { id: "cast_video_3", label: "Character clip 03", aspect: "9/16", type: "video" },
+      { id: "cast_all", label: "All Pissfool characters", aspect: "2000/1600", src: "/media/pissfool/cast-all-characters.webp", alt: "Crowded illustration of the whole Pissfool cast hanging out in one big room under a banner reading \"life is Graet!\"", caption: "The cast · every character created for Pissfool" },
+      { id: "cast_video_1", label: "Character clip 01", aspect: "9/16", type: "video", video: "/media/pissfool/cast-01.mp4", poster: "/media/pissfool/cast-01-poster.webp", alt: "Pissfool character animation, clip 1" },
+      { id: "cast_video_2", label: "Character clip 02", aspect: "9/16", type: "video", video: "/media/pissfool/cast-02.mp4", poster: "/media/pissfool/cast-02-poster.webp", alt: "Pissfool character animation, clip 2" },
 
       // Part 04 — Signature character: traditional animation
-      { id: "signature_manual_1", label: "Traditional · clip 01", aspect: "9/16", type: "video" },
-      { id: "signature_manual_2", label: "Traditional · clip 02", aspect: "9/16", type: "video" },
+      { id: "signature_manual_1", label: "Traditional · clip 01", aspect: "9/16", type: "video", video: "/media/pissfool/signature-traditional-01.mp4", poster: "/media/pissfool/signature-traditional-01-poster.webp", alt: "Signature character, traditional hand-made animation, clip 1" },
+      { id: "signature_manual_2", label: "Traditional · clip 02", aspect: "9/16", type: "video", video: "/media/pissfool/signature-traditional-02.mp4", poster: "/media/pissfool/signature-traditional-02-poster.webp", alt: "Signature character, traditional hand-made animation, clip 2" },
 
       // Part 04 — Signature character: AI-assisted animation
-      { id: "signature_ai_1", label: "AI-assisted · clip 01", aspect: "9/16", type: "video" },
-      { id: "signature_ai_2", label: "AI-assisted · clip 02", aspect: "9/16", type: "video" },
+      { id: "signature_ai_1", label: "AI-assisted · clip 01", aspect: "9/16", type: "video", video: "/media/pissfool/signature-ai-01.mp4", poster: "/media/pissfool/signature-ai-01-poster.webp", alt: "Signature character, AI-assisted animation, clip 1" },
+      { id: "signature_ai_2", label: "AI-assisted · clip 02", aspect: "9/16", type: "video", video: "/media/pissfool/signature-ai-02.mp4", poster: "/media/pissfool/signature-ai-02-poster.webp", alt: "Signature character, AI-assisted animation, clip 2" },
     ],
   },
 
@@ -352,30 +362,32 @@ export const projects: Project[] = [
     ],
     layout: "product",
     media: [
-      { id: "artwork", label: "Original artwork", aspect: "1/1" },
-      { id: "tshirt", label: "T-shirt graphic", aspect: "4/5" },
-      { id: "tote", label: "Tote bag graphic", aspect: "4/5" },
-      { id: "print_files", label: "Final print files", aspect: "4/5" },
-      { id: "applications", label: "Applications", aspect: "16/9" },
-    ],
-  },
-
-  {
-    id: "tabassom",
-    number: "05",
-    title: "Tabassom Printing",
-    categories: ["Textile Printing", "Print Preparation"],
-    role: "Print & Textile Designer",
-    period: "2022",
-    intro:
-      "Where design meets fabric: preparing and adapting visuals so they hold up through textile production.",
-    process: ["Textile printing", "Print preparation", "Adapting designs for fabric production"],
-    layout: "swatch",
-    media: [
-      { id: "pattern", label: "Pattern", aspect: "1/1" },
-      { id: "sample", label: "Sample", aspect: "1/1" },
-      { id: "process", label: "Printing process", aspect: "1/1" },
-      { id: "finished", label: "Finished textile", aspect: "1/1" },
+      {
+        id: "main_design",
+        label: "Main design · sticker collage",
+        aspect: "1414/2000",
+        src: "/media/droplinked/main-design-sticker-collage.webp",
+        alt: "Droplinked sticker-collage illustration: the droplinked logo surrounded by crypto symbols, money, rockets, a bull, a piggy bank and cartoon characters",
+        caption: "Main design · sticker collage",
+      },
+      {
+        id: "printed",
+        label: "Printed · on a T-shirt",
+        // Cropped to 4:5 on the page so the hero fits on screen; the lightbox shows the full photo.
+        aspect: "4/5",
+        focus: "50% 62%",
+        src: "/media/droplinked/printed-tshirt.webp",
+        alt: "The Droplinked sticker-collage design printed on a black T-shirt, worn outdoors",
+        caption: "Printed · the design on a T-shirt",
+      },
+      {
+        id: "logo_sticker",
+        label: "Small design · logo sticker",
+        aspect: "2000/798",
+        src: "/media/droplinked/logo-sticker.webp",
+        alt: "Droplinked wordmark as a die-cut sticker with a balloon, rocket, cloud and gem",
+        caption: "Small design · logo sticker",
+      },
     ],
   },
 ];

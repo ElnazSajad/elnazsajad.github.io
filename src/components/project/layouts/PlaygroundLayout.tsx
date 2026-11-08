@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import type { Project } from "@/content/types";
 import { Caption, Media } from "@/components/Media";
 import { Reveal } from "@/components/Reveal";
@@ -94,30 +94,48 @@ export function PlaygroundLayout({ p }: { p: Project }) {
               </ul>
             </Reveal>
 
-            {p.outcome && (
+            {p.milestone && (
               <Reveal className="md:col-span-6 md:col-start-7" delay={120}>
                 <div className="-rotate-2 bg-ink p-7 text-paper transition-transform duration-500 hover:rotate-0 md:p-10">
-                  <p className="label-mono text-signal">Audience milestone</p>
-                  <p className="display-xl mt-4 text-[clamp(3rem,8vw,6.5rem)]">
-                    160K<span className="text-signal">+</span>
-                  </p>
-                  <p className="mt-3 font-serif text-2xl italic">combined audience · millions of views</p>
-                  <p className="mt-4 text-sm text-paper/70">{p.outcome}</p>
+                  <p className="label-mono text-signal">{p.milestone.eyebrow}</p>
+                  <p className="display-xl mt-4 text-[clamp(3rem,8vw,6.5rem)]">{p.milestone.value}</p>
+                  <p className="mt-3 font-serif text-2xl italic">{p.milestone.caption}</p>
+                  <dl className="mt-6 grid grid-cols-2 gap-4 border-t border-paper/20 pt-5">
+                    {p.milestone.stats.map((s) => (
+                      <div key={s.label} className="flex flex-col-reverse">
+                        <dt className="mt-1 label-mono text-paper/60">{s.label}</dt>
+                        <dd className="font-display text-3xl font-semibold tracking-tight text-signal md:text-4xl">
+                          {s.value}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                  {p.outcome && <p className="mt-5 text-sm text-paper/70">{p.outcome}</p>}
                 </div>
               </Reveal>
             )}
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 md:gap-8">
-            {[
-              { id: "growth_1", caption: "Screenshot 01 · growth" },
-              { id: "growth_2", caption: "Screenshot 02 · reach & performance" },
-            ].map((item, i) => (
-              <Reveal key={item.id} delay={i * 100}>
-                <Media slot={slot(item.id)} className="bg-paper" />
-                <Caption>{item.caption}</Caption>
-              </Reveal>
-            ))}
+          {/* Equal-height row: each screenshot grows by its own aspect ratio. */}
+          <div className="flex flex-col gap-6 md:flex-row md:gap-8">
+            {["growth_1", "growth_2"].map((id, i) => {
+              const s = slot(id);
+              const [w, h] = (s?.aspect ?? "16/10").split("/").map(Number);
+              return (
+                <div
+                  key={id}
+                  className="min-w-0 md:[flex:var(--r)_1_0%]"
+                  style={{ "--r": w && h ? w / h : 1.6 } as CSSProperties}
+                >
+                  <Reveal delay={i * 100}>
+                    <Media slot={s} className="bg-paper shadow-sm" />
+                    <Caption>
+                      Screenshot 0{i + 1} · {s?.src ? s.caption : i === 0 ? "growth" : "reach & performance"}
+                    </Caption>
+                  </Reveal>
+                </div>
+              );
+            })}
           </div>
         </div>
 
@@ -159,15 +177,22 @@ export function PlaygroundLayout({ p }: { p: Project }) {
             </Chapter>
           </Reveal>
 
-          <Reveal>
-            <Media slot={slot("cast_all")} className="bg-paper" />
+          {/* Same width as the clip row below, so image and clips read as one column. */}
+          <Reveal className="md:mx-auto md:max-w-4xl">
+            <Media slot={slot("cast_all")} className="bg-paper shadow-sm" />
             <Caption>The cast · every character created for Pissfool</Caption>
           </Reveal>
 
-          {/* Swipeable row on phones, three columns on desktop. */}
-          <ol className="scrollbar-none -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 md:mx-auto md:grid md:max-w-4xl md:grid-cols-3 md:gap-8 md:overflow-visible md:px-0">
-            {["cast_video_1", "cast_video_2", "cast_video_3"].map((id, i) => (
-              <li key={id} className="w-[62vw] shrink-0 snap-start sm:w-[40vw] md:w-auto">
+          {/* Two clips under the cast image: pinned to its left and right edges, gently staggered. */}
+          <ol className="grid grid-cols-2 gap-5 md:mx-auto md:max-w-4xl md:gap-8">
+            {["cast_video_1", "cast_video_2"].map((id, i) => (
+              <li
+                key={id}
+                className={cn(
+                  "md:w-3/4",
+                  i === 0 ? "md:justify-self-start" : "mt-10 md:mt-20 md:justify-self-end",
+                )}
+              >
                 <Reveal delay={i * 90}>
                   <Media slot={slot(id)} className="bg-paper" />
                   <Caption>Character clip · 0{i + 1}</Caption>

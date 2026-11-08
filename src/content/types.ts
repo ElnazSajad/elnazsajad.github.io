@@ -46,6 +46,13 @@ export type Project = {
   intro: string;
   process: string[];
   outcome?: string;
+  /** Headline figure card, e.g. audience size. Use only real, verifiable numbers. */
+  milestone?: {
+    eyebrow: string;
+    value: string;
+    caption: string;
+    stats: { value: string; label: string }[];
+  };
   /** External profiles, e.g. social channels. Empty `href` shows "link to be added". */
   links?: { name: string; href: string; handle?: string }[];
   layout: ProjectLayout;

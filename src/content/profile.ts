@@ -6,36 +6,42 @@ export const profile = {
   /** Add a URL to turn a placeholder into a live link. */
   socials: [
     { name: "Instagram", href: "" },
-    { name: "LinkedIn", href: "" },
+    { name: "LinkedIn", href: "https://www.linkedin.com/in/elnaz-sajad-0aa7441b0/" },
     { name: "Behance", href: "" },
   ],
 };
 
 export const skills = [
-  "Digital Marketing",
+  "Creative Direction",
+  "Art Direction",
   "Creative Strategy",
-  "Content Strategy",
-  "SEO",
-  "GEO",
-  "Local Marketing",
+  "Concept Development",
+  "Visual Storytelling",
+  "Brand Strategy",
+  "Campaign Development",
   "Brand Communication",
+  "Content Strategy",
+  "Visual Identity",
+  "Digital Marketing",
   "Graphic Design",
   "Motion Graphics",
-  "Character Design",
   "Illustration",
-  "Photography",
-  "Video Production",
 ];
 
+/** Tools, shown in groups under the About section. */
 export const tools = [
-  "Photoshop",
-  "Illustrator",
-  "After Effects",
-  "Premiere Pro",
-  "Canva",
-  "Meta Business Suite",
-  "Meta Ads",
-  "Google Analytics",
+  {
+    group: "Design & Motion",
+    items: ["Adobe Photoshop", "Adobe Illustrator", "Adobe After Effects", "CapCut", "Canva"],
+  },
+  {
+    group: "Generative AI",
+    items: ["AI Image Generation", "AI Video Generation", "AI-Assisted Design & Editing", "Generative AI Tools"],
+  },
+  {
+    group: "Marketing & Analytics",
+    items: ["Meta Business Suite", "Meta Ads Manager", "Google Analytics"],
+  },
 ];
 
 /** Words in the hero ticker. */
