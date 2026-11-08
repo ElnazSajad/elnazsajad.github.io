@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { MediaSlot } from "@/content/types";
 import { useInView, usePrefersReducedMotion } from "@/lib/hooks";
-import { cn } from "@/lib/utils";
+import { asset, cn } from "@/lib/utils";
 import { useZoom } from "./Lightbox";
 
 type Tone = "light" | "dark";
@@ -31,7 +31,7 @@ function ImageMedia({ slot, className }: { slot: MediaSlot; className?: string }
 
   const img = (
     <img
-      src={slot.src}
+      src={asset(slot.src)}
       alt={slot.alt ?? slot.label}
       loading="lazy"
       decoding="async"
@@ -109,8 +109,8 @@ function VideoMedia({ slot, className, tone }: { slot: MediaSlot; className?: st
       <video
         ref={videoRef}
         className="h-full w-full object-cover"
-        src={slot.video}
-        poster={slot.poster}
+        src={asset(slot.video)}
+        poster={asset(slot.poster)}
         muted
         loop
         playsInline

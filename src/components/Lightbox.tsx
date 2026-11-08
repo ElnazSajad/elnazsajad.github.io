@@ -9,7 +9,7 @@ import {
   type ReactNode,
 } from "react";
 import type { MediaSlot } from "@/content/types";
-import { pad2 } from "@/lib/utils";
+import { asset, pad2 } from "@/lib/utils";
 
 /* ------------------------------------------------------------------ *
  * Gallery context — the set of images a lightbox can step through.
@@ -91,7 +91,7 @@ export function LightboxProvider({ children }: { children: ReactNode }) {
     const { images, index } = state;
     for (const i of [index + 1, index - 1]) {
       const src = images[(i + images.length) % images.length]?.src;
-      if (src) new Image().src = src;
+      if (src) new Image().src = asset(src)!;
     }
   }, [state]);
 
@@ -144,7 +144,7 @@ export function LightboxProvider({ children }: { children: ReactNode }) {
             >
               <img
                 key={current.src}
-                src={current.src}
+                src={asset(current.src)}
                 alt={current.alt ?? current.label}
                 className="max-h-full max-w-full object-contain shadow-2xl"
               />
