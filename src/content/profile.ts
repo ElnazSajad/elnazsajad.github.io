@@ -5,9 +5,8 @@ export const profile = {
   email: "elnazsj611@gmail.com",
   /** Add a URL to turn a placeholder into a live link. */
   socials: [
-    { name: "Instagram", href: "" },
+    { name: "Instagram", href: "https://www.instagram.com/pissfool__/" },
     { name: "LinkedIn", href: "https://www.linkedin.com/in/elnaz-sajad-0aa7441b0/" },
-    { name: "Behance", href: "" },
   ],
 };
 

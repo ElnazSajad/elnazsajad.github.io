@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import { profile } from "@/content/profile";
 import { Container } from "@/components/project/parts";
 
@@ -41,7 +41,10 @@ export function Contact() {
           </button>
         </div>
 
-        <ul className="mt-16 grid gap-px border-t border-paper/20 sm:grid-cols-3">
+        <ul
+          className="mt-16 grid gap-px border-t border-paper/20 sm:grid-cols-[repeat(var(--n),minmax(0,1fr))]"
+          style={{ "--n": profile.socials.length } as CSSProperties}
+        >
           {profile.socials.map((s) => (
             <li key={s.name} className="border-b border-paper/20 py-4">
               {s.href ? (
